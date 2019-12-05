@@ -1,6 +1,13 @@
-# bw_ui_kit
+Personal UI playground.
 
-A new Flutter application.
+## Why: 
+Sometimes I'm bored, and I see an interesting idea online and I think "🤔 Bet I could make that in Flutter"... so heres those files.
+
+## What: 
+This is the Raw Directory for the Project I use for this, Theres a central Main.dart that has whatever the currently being worked on Design. Old ones will be named based on the image source I used to build them.
+
+## No seriously why: 
+Practice, boredom, and making assets that I can reuse bits and pieces of in future Projects
 
 ## Getting Started
 
@@ -14,3 +21,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+^ Left this here for anyone whos new to Flutter and looking for help.
+Really just download this 🤷‍♀️ 
