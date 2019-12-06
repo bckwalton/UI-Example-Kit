@@ -362,6 +362,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ]),
               ),
+              actions: <Widget>[
+                ClipOval(
+                  child: Material(
+                    // button color
+                    child: InkWell(
+                      splashColor: Colors.red, // inkwell color
+                      child: Image(
+                        image: NetworkImage(
+                            'https://66.media.tumblr.com/c6cecae55f415dd3d4afdf734d074bad/tumblr_nvvuof2bFD1rpdk57o1_540.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
             body: Container(
               child: Padding(
