@@ -3,9 +3,19 @@ import 'dart:ui' as prefix0;
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-void main() => runApp(MyApp());
+// Based wholly on: https://dribbble.com/shots/3884284-Entertainment-Magazine by Chris Yang.
+// Didn't do
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -151,7 +161,8 @@ Widget glowButtonDate(
                       child: AutoSizeText(
                         text.toUpperCase(),
                         softWrap: false,
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
                         maxLines: 1,
                         minFontSize: 1,
                         maxFontSize: 30,
@@ -217,6 +228,9 @@ Widget trendingCards(context,
           padding: const EdgeInsets.only(bottom: 5),
           child: AutoSizeText(
             leadText.toUpperCase(),
+            maxLines: 1,
+            minFontSize: 10,
+            maxFontSize: 40,
             style: TextStyle(fontSize: 14, color: leadTextColor),
           ),
         ),
@@ -224,6 +238,10 @@ Widget trendingCards(context,
           padding: const EdgeInsets.only(bottom: 5),
           child: AutoSizeText(
             midText,
+            softWrap: false,
+            maxLines: 1,
+            minFontSize: 20,
+            maxFontSize: 40,
             style: TextStyle(fontSize: 30, color: midTextColor),
           ),
         ),
@@ -231,6 +249,9 @@ Widget trendingCards(context,
           padding: const EdgeInsets.only(bottom: 5),
           child: AutoSizeText(
             bottomText,
+            maxLines: 1,
+            minFontSize: 5,
+            maxFontSize: 40,
             style: TextStyle(fontSize: 11, color: bottomTextColor),
           ),
         ),
@@ -311,26 +332,34 @@ class _MyHomePageState extends State<MyHomePage> {
               centerTitle: false,
               title: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
-                height: AppBar().preferredSize.height,
+                height: AppBar().preferredSize.height + 20,
                 child: Column(children: <Widget>[
-                  Row(children: <Widget>[
-                    AutoSizeText(
-                      'Today, ' + formattedDate,
-                      textAlign: TextAlign.left,
-                      maxLines: 2,
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ]),
-                  Row(children: <Widget>[
-                    AutoSizeText(
-                      'Neon Night',
-                      textAlign: TextAlign.justify,
-                      maxLines: 1,
-                      style: TextStyle(fontSize: 32),
-                      minFontSize: 10,
-                      maxFontSize: 40,
-                    )
-                  ])
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Row(children: <Widget>[
+                      AutoSizeText(
+                        'Today, ' + formattedDate,
+                        textAlign: TextAlign.left,
+                        maxLines: 2,
+                        minFontSize: 10,
+                        maxFontSize: 20,
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Row(children: <Widget>[
+                      AutoSizeText(
+                        'Neon Night',
+                        textAlign: TextAlign.justify,
+                        maxLines: 1,
+                        style: TextStyle(fontSize: 32),
+                        minFontSize: 10,
+                        maxFontSize: 40,
+                      )
+                    ]),
+                  )
                 ]),
               ),
             ),
@@ -410,6 +439,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             scrollDirection: Axis.horizontal,
                             children: <Widget>[
                               trendingCards(context,
+                                  bottomText:
+                                      'Do you know the meaning behind your favorite historic Album Covers?',
                                   imageUrl:
                                       'https://images.genius.com/66715046cd34d7cb81fe0f31399407c5.1000x1000x1.jpg'),
                               trendingCards(context,
